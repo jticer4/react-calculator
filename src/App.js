@@ -30,6 +30,9 @@ class Calculator extends React.Component {
 				<div className="operator-keys">
 					<button className="calculator-key key-divide">/</button>
 					<button className="calculator-key key-multiply">*</button>
+					<button className="calculator-key key-subtract">-</button>
+					<button className="calculator-key key-add">+</button>
+					<button className="calculator-key key-equals">=</button>
 				</div>
 			</div>
       </div>
