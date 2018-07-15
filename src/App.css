@@ -5,11 +5,7 @@
 }
 
 .calculator-keypad {
-	background-color: #30FF00;
-}
-
-.operator-keys {
-	background-color: #FF4951;
+	background-color: darkgrey;
 }
 
 .row-1 {
