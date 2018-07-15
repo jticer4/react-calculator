@@ -25,3 +25,8 @@
 .row-3 {
 	display: block;
 }
+
+.key-0 {
+	width: 5rem;
+	text-align: left;
+}
