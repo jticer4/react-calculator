@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
+import styles from './App.css';
 
 class Calculator extends React.Component {
   render() {
     return (
       <div className="calculator">
-        <div className='calculator-display'>0</div>
+        <div className="calculator-display">0</div>
          <div className="calculator-keypad">
 				<div className="input-keys">
 					<div className="function-keys">
