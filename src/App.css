@@ -1,5 +1,6 @@
 .calculator-display {
 	background-color: #C937FF;
+	text-align: right;
 }
 
 .calculator-keypad {
@@ -29,4 +30,9 @@
 .key-0 {
 	width: 5rem;
 	text-align: left;
+}
+
+.calculator {
+	display: inline-block;
+	text-align: center;
 }
