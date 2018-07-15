@@ -15,16 +15,22 @@ class Calculator extends React.Component {
 						<button className="calculator-key key-percent">%</button>
 					</div>
 					<div className="digit-keys">
-						<button className="calculator-key key-0">0</button>
+						<div className="row-1">
 						<button className="calculator-key key-1">1</button>
 						<button className="calculator-key key-2">2</button>
 						<button className="calculator-key key-3">3</button>
+						</div>
+						<div className="row-2">
 						<button className="calculator-key key-4">4</button>
 						<button className="calculator-key key-5">5</button>
 						<button className="calculator-key key-6">6</button>
+						</div>
+						<div className="row-3">
 						<button className="calculator-key key-7">7</button>
 						<button className="calculator-key key-8">8</button>
 						<button className="calculator-key key-9">9</button>
+						</div>
+						<button className="calculator-key key-0">0</button>
 					</div>
 				</div>
 				<div className="operator-keys">
