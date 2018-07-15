@@ -1,14 +1,11 @@
 .calculator-display {
 	background-color: #C937FF;
 	text-align: right;
+	padding: 12px;
 }
 
 .calculator-keypad {
 	background-color: #30FF00;
-}
-
-.function-keys {
-	background-color: #0CA2E8;
 }
 
 .operator-keys {
