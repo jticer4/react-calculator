@@ -19,6 +19,18 @@ class Calculator extends React.Component {
 		})
 	}
 
+	inputDecimal() {
+		const { displayValue } = this.state
+
+		//only if we don't have a decimal value will we make a change to the display value
+		if (displayValue.indexOf('.') === -1) {
+			this.setState({
+				displayValue: displayValue + '.'
+			})
+		}
+
+	}
+
 	render() {
 		const { displayValue } = this.state
 
@@ -62,7 +74,7 @@ class Calculator extends React.Component {
 
 						<div className="row">
 							<button className="col-md-6 calculator-key key-0 btn btn-lg" onClick={() => this.inputDigit(0)}>0</button>
-							<button className="col-md-3 calculator-key key-decimal btn btn-lg">.</button>
+							<button className="col-md-3 calculator-key key-decimal btn btn-lg" onClick={() =>this.inputDecimal()}>.</button>
 							<button className="col-md-3 calculator-key key-equals btn btn-warning btn-lg">=</button>
 						</div>
 				</div>
