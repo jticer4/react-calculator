@@ -28,7 +28,14 @@ class Calculator extends React.Component {
 				displayValue: displayValue + '.'
 			})
 		}
+	}
 
+	clearDisplay() {
+		const { displayValue } = this.state
+
+		this.setState({
+			displayValue: '0'
+		})
 	}
 
 	render() {
@@ -45,7 +52,7 @@ class Calculator extends React.Component {
 				<div className="calculator-keypad">
 
 					<div className="function-keys row">
-						<button className="col-md-3 calculator-key key-clear btn btn-primary btn-lg">AC</button>
+						<button className="col-md-3 calculator-key key-clear btn btn-primary btn-lg"onClick={() => this.clearDisplay()}>AC</button>
 						<button className="col-md-3 calculator-key key-sign btn btn-info btn-lg">+/-</button>
 						<button className="col-md-3 calculator-key key-percent btn btn-info btn-lg">%</button>
 						<button className="col-md-3 calculator-key key-divide btn btn-warning btn-lg">/</button>
