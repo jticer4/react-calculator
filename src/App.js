@@ -4,13 +4,29 @@ import styles from './App.css';
 import {Navbar, Jumbotron, Button} from 'react-bootstrap';
 
 class Calculator extends React.Component {
+	// sets the default display value to 0
+	state = {
+		displayValue: '0'
+	}
+
+	//takes the display value and changes it to the digit inputted
+	inputDigit(digit) {
+		const { displayValue } = this.state
+
+		this.setState({
+			displayValue: String(digit)
+		})
+	}
+
 	render() {
+		const { displayValue } = this.state
+
 		return (
 
 			<div className="calculator container-fluid">
 
 				<div className="row">
-					<div className="calculator-display col-md-12">0</div>
+					<div className="calculator-display col-md-12">{displayValue}</div>
 				</div>
 
 				<div className="calculator-keypad">
@@ -22,32 +38,32 @@ class Calculator extends React.Component {
 						<button className="col-md-3 calculator-key key-divide btn btn-warning btn-lg">/</button>
 					</div>
 
-					<div className="row">
-						<button className="col-md-3 calculator-key key-7 btn btn-lg">7</button>
-						<button className="col-md-3 calculator-key key-8 btn btn-lg">8</button>
-						<button className="col-md-3 calculator-key key-9 btn btn-lg">9</button>
-						<button className="col-md-3 calculator-key key-multiply btn btn-warning btn-lg">*</button>
-					</div>
+						<div className="row">
+							<button className="col-md-3 calculator-key key-7 btn btn-lg" onClick={() => this.inputDigit(7)}>7</button>
+							<button className="col-md-3 calculator-key key-8 btn btn-lg" onClick={() => this.inputDigit(8)}>8</button>
+							<button className="col-md-3 calculator-key key-9 btn btn-lg" onClick={() => this.inputDigit(9)}>9</button>
+							<button className="col-md-3 calculator-key key-multiply btn btn-warning btn-lg">*</button>
+						</div>
 
-					<div className="row">
-						<button className="col-md-3 calculator-key key-4 btn btn-lg">4</button>
-						<button className="col-md-3 calculator-key key-5 btn btn-lg">5</button>
-						<button className="col-md-3 calculator-key key-6 btn btn-lg">6</button>
-						<button className="col-md-3 calculator-key key-subtract btn btn-warning btn-lg">-</button>
-					</div>
+						<div className="row">
+							<button className="col-md-3 calculator-key key-4 btn btn-lg" onClick={() => this.inputDigit(4)}>4</button>
+							<button className="col-md-3 calculator-key key-5 btn btn-lg" onClick={() => this.inputDigit(5)}>5</button>
+							<button className="col-md-3 calculator-key key-6 btn btn-lg" onClick={() => this.inputDigit(6)}>6</button>
+							<button className="col-md-3 calculator-key key-subtract btn btn-warning btn-lg">-</button>
+						</div>
 
-					<div className="row">
-						<button className="col-md-3 calculator-key key-1 btn btn-lg">1</button>
-						<button className="col-md-3 calculator-key key-2 btn btn-lg">2</button>
-						<button className="col-md-3 calculator-key key-3 btn btn-lg">3</button>
-						<button className="col-md-3 calculator-key key-add btn btn-warning btn-lg">+</button>
-					</div>
+						<div className="row">
+							<button className="col-md-3 calculator-key key-1 btn btn-lg" onClick={() => this.inputDigit(1)}>1</button>
+							<button className="col-md-3 calculator-key key-2 btn btn-lg" onClick={() => this.inputDigit(2)}>2</button>
+							<button className="col-md-3 calculator-key key-3 btn btn-lg" onClick={() => this.inputDigit(3)}>3</button>
+							<button className="col-md-3 calculator-key key-add btn btn-warning btn-lg">+</button>
+						</div>
 
-					<div className="row">
-						<button className="col-md-6 calculator-key key-0 btn btn-lg">0</button>
-						<button className="col-md-3 calculator-key key-decimal btn btn-lg">.</button>
-						<button className="col-md-3 calculator-key key-equals btn btn-warning btn-lg">=</button>
-					</div>
+						<div className="row">
+							<button className="col-md-6 calculator-key key-0 btn btn-lg" onClick={() => this.inputDigit(0)}>0</button>
+							<button className="col-md-3 calculator-key key-decimal btn btn-lg">.</button>
+							<button className="col-md-3 calculator-key key-equals btn btn-warning btn-lg">=</button>
+						</div>
 				</div>
 			</div>
 		);

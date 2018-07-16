@@ -4,26 +4,8 @@
 	padding: 12px;
 	font-size: 3rem;
 }
-
-.calculator-keypad {
-	background-color: darkgrey;
-}
-
-.row-1 {
-	display: block;
-}
-
-.row-2 {
-	display: block;
-}
-
-.row-3 {
-	display: block;
-}
-
 .key-0 {
-	width: 5rem;
-	text-align: left;
+	width: 9rem;
 }
 
 .calculator {
