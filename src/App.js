@@ -18,7 +18,7 @@ class Calculator extends React.Component {
 			displayValue: displayValue === '0' ? String(digit) : displayValue + digit
 		})
 	}
-
+	//adds a decimal to the display value
 	inputDecimal() {
 		const { displayValue } = this.state
 
@@ -29,12 +29,31 @@ class Calculator extends React.Component {
 			})
 		}
 	}
-
+	//resets the display value to 0
 	clearDisplay() {
 		const { displayValue } = this.state
-
 		this.setState({
 			displayValue: '0'
+		})
+	}
+	//switches the sign from negative to positive and vice versa
+	switchSign() {
+		const { displayValue } = this.state
+
+		//if the character at index 0 is a - then remove it, otherwise add a - before the display value
+		this.setState({
+			displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
+		})
+	}
+	//change the display value to a percentage
+	changeToPercent() {
+		const { displayValue } = this.state
+		//parse displayValue and return a floating point number
+		const value = parseFloat(displayValue)
+
+		//divide the floating point value by 100 and return it as a string
+		this.setState({
+			displayValue: String(value / 100)
 		})
 	}
 
@@ -53,8 +72,8 @@ class Calculator extends React.Component {
 
 					<div className="function-keys row">
 						<button className="col-md-3 calculator-key key-clear btn btn-primary btn-lg"onClick={() => this.clearDisplay()}>AC</button>
-						<button className="col-md-3 calculator-key key-sign btn btn-info btn-lg">+/-</button>
-						<button className="col-md-3 calculator-key key-percent btn btn-info btn-lg">%</button>
+						<button className="col-md-3 calculator-key key-sign btn btn-info btn-lg" onClick={() => this.switchSign()}>+/-</button>
+						<button className="col-md-3 calculator-key key-percent btn btn-info btn-lg" onClick={() => this.changeToPercent()}>%</button>
 						<button className="col-md-3 calculator-key key-divide btn btn-warning btn-lg">/</button>
 					</div>
 
