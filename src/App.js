@@ -13,8 +13,9 @@ class Calculator extends React.Component {
 	inputDigit(digit) {
 		const { displayValue } = this.state
 
+		//if the display value is 0 then replace it with the digit, otherwise append the digit to the end of the string
 		this.setState({
-			displayValue: String(digit)
+			displayValue: displayValue === '0' ? String(digit) : displayValue + digit
 		})
 	}
 
