@@ -13,7 +13,7 @@ class Calculator extends React.Component {
 
 	//takes the display value and changes it to the digit inputted
 	inputDigit(digit) {
-		const { displayValue, waitingForOperand } = this.state
+		const {displayValue, waitingForOperand} = this.state
 
 		//if waitingForOperand is true then clear the display and input the new value, otherwise append the digit to the end of the string
 		if(waitingForOperand) {
@@ -28,36 +28,49 @@ class Calculator extends React.Component {
 			})
 		}
 	}
+
 	//adds a decimal to the display value
 	inputDecimal() {
-		const { displayValue } = this.state
+		const {displayValue, waitingForOperand} = this.state
 
-		//only if we don't have a decimal value will we make a change to the display value
-		if (displayValue.indexOf('.') === -1) {
+		//if waiting for operand is true clear the display and input a decimal and set waitingForOperand to false
+		if(waitingForOperand) {
 			this.setState({
-				displayValue: displayValue + '.'
+				displayValue: '.',
+				waitingForOperand: false
 			})
+		} else {
+			//only if we don't have a decimal value will we make a change to the display value
+			if(displayValue.indexOf('.') === -1) {
+				this.setState({
+					displayValue: displayValue + '.',
+					waitingForOperand: false
+				})
+			}
 		}
 	}
+
 	//resets the display value to 0
 	clearDisplay() {
-		const { displayValue } = this.state
+		const {displayValue} = this.state
 		this.setState({
 			displayValue: '0'
 		})
 	}
+
 	//switches the sign from negative to positive and vice versa
 	switchSign() {
-		const { displayValue } = this.state
+		const {displayValue} = this.state
 
 		//if the character at index 0 is a - then remove it, otherwise add a - before the display value
 		this.setState({
 			displayValue: displayValue.charAt(0) === '-' ? displayValue.substr(1) : '-' + displayValue
 		})
 	}
+
 	//change the display value to a percentage
 	changeToPercent() {
-		const { displayValue } = this.state
+		const {displayValue} = this.state
 		//parse displayValue and return a floating point number
 		const value = parseFloat(displayValue)
 
@@ -66,6 +79,7 @@ class Calculator extends React.Component {
 			displayValue: String(value / 100)
 		})
 	}
+
 	//adds a operator to the equation and sets the operator to be used
 	executeOperation(operator) {
 		this.setState({
@@ -75,7 +89,7 @@ class Calculator extends React.Component {
 	}
 
 	render() {
-		const { displayValue } = this.state
+		const {displayValue} = this.state
 
 		return (
 
@@ -88,38 +102,66 @@ class Calculator extends React.Component {
 				<div className="calculator-keypad">
 
 					<div className="function-keys row">
-						<button className="col-md-3 calculator-key key-clear btn btn-primary btn-lg" onClick={() => this.clearDisplay()}>AC</button>
-						<button className="col-md-3 calculator-key key-sign btn btn-info btn-lg" onClick={() => this.switchSign()}>+/-</button>
-						<button className="col-md-3 calculator-key key-percent btn btn-info btn-lg" onClick={() => this.changeToPercent()}>%</button>
-						<button className="col-md-3 calculator-key key-divide btn btn-warning btn-lg" onClick={() => this.executeOperation('/')}>/</button>
+						<button className="col-md-3 calculator-key key-clear btn btn-primary btn-lg"
+								  onClick={() => this.clearDisplay()}>AC
+						</button>
+						<button className="col-md-3 calculator-key key-sign btn btn-info btn-lg"
+								  onClick={() => this.switchSign()}>+/-
+						</button>
+						<button className="col-md-3 calculator-key key-percent btn btn-info btn-lg"
+								  onClick={() => this.changeToPercent()}>%
+						</button>
+						<button className="col-md-3 calculator-key key-divide btn btn-warning btn-lg"
+								  onClick={() => this.executeOperation('/')}>/
+						</button>
 					</div>
 
-						<div className="row">
-							<button className="col-md-3 calculator-key key-7 btn btn-lg" onClick={() => this.inputDigit(7)}>7</button>
-							<button className="col-md-3 calculator-key key-8 btn btn-lg" onClick={() => this.inputDigit(8)}>8</button>
-							<button className="col-md-3 calculator-key key-9 btn btn-lg" onClick={() => this.inputDigit(9)}>9</button>
-							<button className="col-md-3 calculator-key key-multiply btn btn-warning btn-lg" onClick={() => this.executeOperation('*')}>*</button>
-						</div>
+					<div className="row">
+						<button className="col-md-3 calculator-key key-7 btn btn-lg" onClick={() => this.inputDigit(7)}>7
+						</button>
+						<button className="col-md-3 calculator-key key-8 btn btn-lg" onClick={() => this.inputDigit(8)}>8
+						</button>
+						<button className="col-md-3 calculator-key key-9 btn btn-lg" onClick={() => this.inputDigit(9)}>9
+						</button>
+						<button className="col-md-3 calculator-key key-multiply btn btn-warning btn-lg"
+								  onClick={() => this.executeOperation('*')}>*
+						</button>
+					</div>
 
-						<div className="row">
-							<button className="col-md-3 calculator-key key-4 btn btn-lg" onClick={() => this.inputDigit(4)}>4</button>
-							<button className="col-md-3 calculator-key key-5 btn btn-lg" onClick={() => this.inputDigit(5)}>5</button>
-							<button className="col-md-3 calculator-key key-6 btn btn-lg" onClick={() => this.inputDigit(6)}>6</button>
-							<button className="col-md-3 calculator-key key-subtract btn btn-warning btn-lg"  onClick={() => this.executeOperation('-')}>-</button>
-						</div>
+					<div className="row">
+						<button className="col-md-3 calculator-key key-4 btn btn-lg" onClick={() => this.inputDigit(4)}>4
+						</button>
+						<button className="col-md-3 calculator-key key-5 btn btn-lg" onClick={() => this.inputDigit(5)}>5
+						</button>
+						<button className="col-md-3 calculator-key key-6 btn btn-lg" onClick={() => this.inputDigit(6)}>6
+						</button>
+						<button className="col-md-3 calculator-key key-subtract btn btn-warning btn-lg"
+								  onClick={() => this.executeOperation('-')}>-
+						</button>
+					</div>
 
-						<div className="row">
-							<button className="col-md-3 calculator-key key-1 btn btn-lg" onClick={() => this.inputDigit(1)}>1</button>
-							<button className="col-md-3 calculator-key key-2 btn btn-lg" onClick={() => this.inputDigit(2)}>2</button>
-							<button className="col-md-3 calculator-key key-3 btn btn-lg" onClick={() => this.inputDigit(3)}>3</button>
-							<button className="col-md-3 calculator-key key-add btn btn-warning btn-lg"  onClick={() => this.executeOperation('+')}>+</button>
-						</div>
+					<div className="row">
+						<button className="col-md-3 calculator-key key-1 btn btn-lg" onClick={() => this.inputDigit(1)}>1
+						</button>
+						<button className="col-md-3 calculator-key key-2 btn btn-lg" onClick={() => this.inputDigit(2)}>2
+						</button>
+						<button className="col-md-3 calculator-key key-3 btn btn-lg" onClick={() => this.inputDigit(3)}>3
+						</button>
+						<button className="col-md-3 calculator-key key-add btn btn-warning btn-lg"
+								  onClick={() => this.executeOperation('+')}>+
+						</button>
+					</div>
 
-						<div className="row">
-							<button className="col-md-6 calculator-key key-0 btn btn-lg" onClick={() => this.inputDigit(0)}>0</button>
-							<button className="col-md-3 calculator-key key-decimal btn btn-lg" onClick={() =>this.inputDecimal()}>.</button>
-							<button className="col-md-3 calculator-key key-equals btn btn-warning btn-lg"  onClick={() => this.executeOperation('=')}>=</button>
-						</div>
+					<div className="row">
+						<button className="col-md-6 calculator-key key-0 btn btn-lg" onClick={() => this.inputDigit(0)}>0
+						</button>
+						<button className="col-md-3 calculator-key key-decimal btn btn-lg"
+								  onClick={() => this.inputDecimal()}>.
+						</button>
+						<button className="col-md-3 calculator-key key-equals btn btn-warning btn-lg"
+								  onClick={() => this.executeOperation('=')}>=
+						</button>
+					</div>
 				</div>
 			</div>
 		);
