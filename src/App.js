@@ -13,12 +13,20 @@ class Calculator extends React.Component {
 
 	//takes the display value and changes it to the digit inputted
 	inputDigit(digit) {
-		const { displayValue } = this.state
+		const { displayValue, waitingForOperand } = this.state
 
-		//if the display value is 0 then replace it with the digit, otherwise append the digit to the end of the string
-		this.setState({
-			displayValue: displayValue === '0' ? String(digit) : displayValue + digit
-		})
+		//if waitingForOperand is true then clear the display and input the new value, otherwise append the digit to the end of the string
+		if(waitingForOperand) {
+			this.setState({
+				displayValue: String(digit),
+				waitingForOperand: false
+			})
+		} else {
+			//if the display value is 0 then replace it with the digit, otherwise append the digit to the end of the string
+			this.setState({
+				displayValue: displayValue === '0' ? String(digit) : displayValue + digit
+			})
+		}
 	}
 	//adds a decimal to the display value
 	inputDecimal() {
