@@ -6,6 +6,7 @@ import {Navbar, Jumbotron, Button} from 'react-bootstrap';
 class Calculator extends React.Component {
 	// sets default state values
 	state = {
+		value: null,
 		displayValue: '0',
 		waitingForOperand: false,
 		operator: null
@@ -70,7 +71,7 @@ class Calculator extends React.Component {
 
 	//change the display value to a percentage
 	changeToPercent() {
-		const {displayValue} = this.state
+		const {displayValue, operator} = this.state
 		//parse displayValue and return a floating point number
 		const value = parseFloat(displayValue)
 
@@ -80,11 +81,42 @@ class Calculator extends React.Component {
 		})
 	}
 
-	//adds a operator to the equation and sets the operator to be used
-	executeOperation(operator) {
+	//executes the inputted operation
+	executeOperation(nextOperator) {
+		const { displayValue, operator, value } = this.state
+		//parse displayValue and return a floating point number
+		const nextValue = parseFloat(displayValue)
+
+		//sets up the logic for the different operations that can occur, passing into different functions the arguments of the previous and next values
+		const operations = {
+			'/': (prevValue, nextValue) => prevValue / nextValue,
+			'*': (prevValue, nextValue) => prevValue * nextValue,
+			'+': (prevValue, nextValue) => prevValue + nextValue,
+			'-': (prevValue, nextValue) => prevValue - nextValue,
+			'=': (prevValue, nextValue) => nextValue
+		}
+
+		//if there is no previous value, and they hit an operator key then save the current display value
+		if(value == null) {
+			this.setState({
+				value: nextValue
+			})
+			//if there is an operator then search the operations array using the operator and plug the currentValue and nextValue
+		} else if(operator) {
+			const currentValue = value || 0
+			const computedValue = operations[operator](currentValue, nextValue)
+
+		//set the value and the displayValue to the computed value
+		this.setState({
+			value: computedValue,
+			displayValue: String(computedValue)
+		})
+		}
+
+		//set waitingForOperand to true when operator is entered. Assign the next operator to the operator property in state
 		this.setState({
 			waitingForOperand: true,
-			operator: operator
+			operator: nextOperator
 		})
 	}
 
