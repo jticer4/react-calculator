@@ -1,0 +1,51 @@
+
+/* selects all elements*/
+* {
+	font: normal 28px Helvetica, sans-serif;
+}
+body {
+	margin: 0;
+	padding: 0;
+	padding-top:100px;
+	box-sizing: border-box;
+	/*dont display more info when being held on a touch screen */
+	-webkit-touch-callout: none;
+	/*dont allow users to select the text */
+	-webkit-user-select: none;
+	user-select: none;
+	background-image: url("./images/beach-picture.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+html {
+	height: 100%;
+}
+
+h1 {
+	color: aliceblue !important;
+}
+
+h3 {
+	color: bisque !important;
+}
+
+hr {
+	padding-bottom: 2rem;
+	color: whitesmoke !important;
+}
+
+.calculator-key {
+	padding: 10px !important;
+	background: rgba(0,0,0,0.4) !important;
+	color: aliceblue !important;
+}
+
+button:active{
+	background: black !important;
+	color: whitesmoke !important;
+}
+
+#display {
+	padding-bottom: 1rem;
+}
