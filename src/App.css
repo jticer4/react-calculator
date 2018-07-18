@@ -14,8 +14,7 @@ body {
 	-webkit-user-select: none;
 	user-select: none;
 	background-image: url("./images/beach-picture.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
+	background-size: cover !important;
 }
 
 html {
@@ -23,16 +22,17 @@ html {
 }
 
 h1 {
-	color: aliceblue !important;
+	color: coral !important;
 }
 
 h3 {
-	color: bisque !important;
+	color: lemonchiffon !important;
 }
 
 hr {
 	padding-bottom: 2rem;
 	color: whitesmoke !important;
+	width: 75%;
 }
 
 .calculator-key {
