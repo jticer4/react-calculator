@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import styles from './App.css';
 import {Navbar, Jumbotron, Button} from 'react-bootstrap';
 
-
 class Calculator extends React.Component {
 	// sets default state values
 	state = {
